@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totally Simple Chat App</title>
+</head>
+<body>
+
+<br>
+<ul id ="chat_display"></ul>
+<form id ="form">
+<input id="chat_box" placeholder="Chat goes there">
+<button>Send</button>
+</form>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+const socket = io();
+$('#form').submit( ()=>{
+socket.emit('chat message',$('#chat_box').val());
+$('#chat_box').val('');
+return false;
+});
+
+socket.on('chat message',(message)=>{
+$('#chat_display').append($('<li>').text(message));
+});
+
+</script>
+</body>
+</html>
