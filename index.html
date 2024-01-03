@@ -24,7 +24,7 @@ return false;
 });
 
 socket.on('chat message',(message)=>{
-$('#chat_display').append($('<li>').text(message));
+$('#chat_display').append($('<li id="message">').text(message));
 });
 
 </script>
