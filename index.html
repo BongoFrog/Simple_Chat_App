@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 <title>Totally Simple Chat App</title>
 </head>
 <body>
-
 <br>
 <ul id ="chat_display"></ul>
 <form id ="form">
 <input id="chat_box" placeholder="Chat goes there">
-<button>Send</button>
+<button id="send_button">Send</button>
 </form>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -24,7 +24,7 @@ return false;
 });
 
 socket.on('chat message',(message)=>{
-$('#chat_display').append($('<li>').text(message));
+$('#chat_display').append($('<li class="message">').text(message));
 });
 
 </script>
